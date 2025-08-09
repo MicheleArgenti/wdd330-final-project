@@ -3,47 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WDD330 - Final Project</title>
-    <meta name="description" content="WDD330 - Final Project">
+    <title>Weather App - WDD330 Final Project</title>
+    <meta name="description" content="A weather application using vanilla JavaScript">
     <meta name="author" content="Michele Argenti">
     <link rel="stylesheet" href="styles/main.css">
+    <script type="module" src="scripts/main.js" defer></script>
     <script src="scripts/navigation.js" defer></script>
 </head>
 <body>
     <header>
-        <img src="images/logo.png" alt="Weather App">
+        <img src="images/logo.png" alt="Weather App Logo">
         <div class="hamburger">
-            <div class="hamburger-line"></div>
-            <div class="hamburger-line"></div>
-            <div class="hamburger-line"></div>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
         </div>
         <nav class="nav-menu">
             <a href="#">Home</a>
-            <a href="">Documentation</a>
+            <a href="documentation.html">Documentation</a>
         </nav>
     </header>
     <main>
-        <form id="search-form" role="search" aria-label="City weather search">
-            <label for="location-input" class="sr-only">Enter city name</label>
-            <input 
-                type="text" 
-                id="location-input" 
-                name="location" 
-                placeholder="E.g., London, Tokyo" 
-                aria-label="City name" 
-                required
-                minlength="2"
-            >
-            <button type="submit" aria-label="Search weather">
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                </svg>
-                <span>Search</span>
-            </button>
-        </form>
+        <section class="search-section">
+            <form id="search-form" role="search" aria-label="City weather search">
+                <label for="location-input" class="sr-only">Enter city name</label>
+                <input 
+                    type="text" 
+                    id="location-input" 
+                    name="location" 
+                    placeholder="E.g., London, Tokyo" 
+                    aria-label="City name" 
+                    required
+                    minlength="2"
+                >
+                <button type="submit" aria-label="Search weather">
+                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                    <span>Search</span>
+                </button>
+            </form>
+        </section>
+        <section class="weather-section">
+            <div id="weather-display" class="weather-container">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+        </section>
     </main>
     <footer>
-
+        <p>&copy; 2023 Weather App</p>
     </footer>
 </body>
 </html>
