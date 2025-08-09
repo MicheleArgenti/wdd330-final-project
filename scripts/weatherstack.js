@@ -1,5 +1,5 @@
 const API_KEY = 'c53176d65ed68f5a0b579120439ca9e9';
-const BASE_URL = 'http://api.weatherstack.com/current'
+const BASE_URL = 'https://api.weatherstack.com/current'
 const options = {
 	method: 'GET'
 };
