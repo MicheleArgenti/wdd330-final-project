@@ -37,11 +37,21 @@ document.getElementById('search-form').addEventListener('submit', async (e) => {
 function renderWeather(data) {
     document.getElementById('weather-display').innerHTML = `
         <div class="weather-card">
-            <h2>${data.city}</h2>
-            <p>${data.temp}°C, ${data.condition}</p>
+            <h2>${data.location.name}</h2>
+            <p>${data.current.temp_c}°C, ${data.current.condition.text}</p>
             <div class="weather-icon-container"></div>
         </div>
     `;
+    data.forecast.forecastday[0].hour.forEach(time => {
+        console.log(time.time);
+        let div = document.createElement('div');
+        div.classList.add('weather-card');
+        div.innerHTML = `
+            <h3>${time.time}</h3>
+            <p>${time.temp_c}</p>
+        `;
+        document.getElementById('weather-display').appendChild(div);
+    });
 }
 
 function renderImages(imgUrl) {
@@ -55,3 +65,43 @@ function renderImages(imgUrl) {
     img.loading = 'lazy';
     iconContainer.appendChild(img);
 }
+
+document.getElementById('search-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const location = document.getElementById('location-input').value.trim();
+    if (!location) return;
+
+    const weatherDisplay = document.getElementById('weather-display');
+    
+    try {
+        // Show loading spinner
+        weatherDisplay.innerHTML = `
+            <div class="loading-container">
+                <div class="spinner"></div>
+                <p>Fetching weather data...</p>
+            </div>
+        `;
+        
+        // Create a minimum 5-second delay
+        const delay = new Promise(resolve => setTimeout(resolve, 5000));
+        
+        // Fetch data while waiting
+        const [weatherData, imageUrl] = await Promise.all([
+            fetchWeather(location),
+            fetchWeatherImages(location),
+            delay // This ensures minimum 5s wait
+        ]);
+        
+        // Render results after delay
+        renderWeather(weatherData);
+        renderImages(imageUrl);
+        
+    } catch (error) {
+        weatherDisplay.innerHTML = `
+            <div class="error">
+                <p>Failed to load weather data. Please try again.</p>
+                <small>${error.message}</small>
+            </div>
+        `;
+    }
+});
