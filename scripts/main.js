@@ -11,27 +11,17 @@ document.getElementById('search-form').addEventListener('submit', async (e) => {
 
     const weatherDisplay = document.getElementById('weather-display');
     
-    try {
-        // Show loading state
-        weatherDisplay.innerHTML = '<div class="spinner"></div>';
-        
-        // Fetch data from APIs
-        const weatherData = await fetchWeather(location);
-        const imageUrl = await fetchWeatherImages(location);
-        
-        // Render results
-        renderWeather(weatherData);
-        renderImages(imageUrl);
-        
-    } catch (error) {
-        weatherDisplay.innerHTML = `
-            <div class="error">
-                <p>Failed to load weather data. Please try again.</p>
-                <small>${error.message}</small>
-            </div>
-        `;
-        console.error('API Error:', error);
-    }
+    // Show loading state
+    weatherDisplay.innerHTML = '<div class="spinner"></div>';
+    
+    // Fetch data from APIs
+    const weatherData = await fetchWeather(location);
+    const imageUrl = await fetchWeatherImages(location);
+    
+    // Render results
+    renderWeather(weatherData);
+    renderImages(imageUrl);
+    
 });
 
 function renderWeather(data) {
@@ -43,7 +33,6 @@ function renderWeather(data) {
         </div>
     `;
     data.forecast.forecastday[0].hour.forEach(time => {
-        console.log(time.time);
         let div = document.createElement('div');
         div.classList.add('weather-card');
         div.innerHTML = `
