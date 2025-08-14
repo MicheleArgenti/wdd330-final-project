@@ -115,3 +115,52 @@ header nav.active {
         display: block;
     }
 }
+
+/* Hover effects */
+
+/* Button Hover Effect */
+#search-form button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Input Field Hover */
+#location-input:hover {
+    border-color: #3498db;
+    transition: border-color 0.3s ease;
+}
+
+/* Weather Card Hover */
+.weather-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Hourly Forecast Card Hover */
+.hourly-forecast .weather-card:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+/* Navigation Link Hover */
+.nav-menu a:hover {
+    color: #3498db;
+    border-bottom: 2px solid #3498db;
+    transition: all 0.2s ease;
+}
+
+/* Hamburger Menu Hover */
+.hamburger:hover .hamburger-line {
+    background-color: #3498db;
+    transition: background-color 0.3s ease;
+}
+
+/* Footer Hover Effect */
+footer p:hover {
+    color: #3498db;
+    cursor: default;
+    transition: color 0.3s ease;
+}
